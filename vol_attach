@@ -1,15 +1,19 @@
-# Attach and mount the data volume to /data_1
+#Attach and mount the data volume to /data_1
 
 inst_id=$1
 echo “The instance id is $inst_id”
 
-echo “Set AWS access key for EC2 Command Line Interface”
 aakey=$2
+echo "aakey: $aakey"
 askey=$3
+echo "askey: $askey"
 
 echo “Set AWS access key for EC2 Command Line Interface”
 export AWS_ACCESS_KEY=$aakey
 export AWS_SECRET_KEY=$askey
+
+echo "Check CLI settings"
+ec2-describe-regions
 
 echo “Attach the volume to /dev/xvdf”
 ec2-attach-volume --region ap-southeast-2 vol-0fc91b9fbc057dd11 -i $inst_id -d /dev/xvdf
