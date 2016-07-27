@@ -1,0 +1,14 @@
+# Attach and mount the data volume to /data_1
+
+inst_id=$1
+echo “The instance id is $inst_id”
+
+echo “Attach the volume to /dev/xvdf”
+ec2-attach-volume --region ap-southeast-2 vol-0fc91b9fbc057dd11 -i $inst_id -d /dev/xvdf
+
+echo “Check the devices”
+lsblk
+
+echo “Mount the volume to /data_1”
+sudo mkdir data_1
+sudo mount /dev/xvdf data_1
