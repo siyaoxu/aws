@@ -18,9 +18,17 @@ ec2-describe-regions
 echo “Attach the volume to /dev/xvdf”
 ec2-attach-volume --region ap-southeast-2 vol-0fc91b9fbc057dd11 -i $inst_id -d /dev/xvdf
 
+echo “wait for 10s”
+sleep 10s
+
 echo “Check the devices”
 lsblk
 
-echo “Mount the volume to /data_1”
+echo “make the mount point data_1”
 sudo mkdir data_1
+
+echo “list directories”
+ls
+
+echo “Mount the volume to /data_1”
 sudo mount /dev/xvdf data_1
