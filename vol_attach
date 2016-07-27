@@ -32,3 +32,6 @@ ls
 
 echo “Mount the volume to /data_1”
 sudo mount /dev/xvdf data_1
+
+echo “List all partitions”
+df -h
